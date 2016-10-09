@@ -7,3 +7,4 @@
 -----Laravel-------
 *layoutda active classi islemir dashboardda
 *Dashboardda footerde oz adina link qoymusan amma bosdu
+*Package name-e free yazsa, saytda goruntude free yazilacaq amma free-in ustunde de funt isaresi olacaq

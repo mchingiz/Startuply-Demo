@@ -117,19 +117,35 @@
 	</nav>
 
 	<section id="header">
-		<div class="container fadeIn">
-			<h1>{{ $user->header->heading }}</h1>
-			<h3>{{ $user->header->paragraph }}</h3>
+		@if( $user )
+      <div class="container fadeIn">
+         <h1>{{ $user->header->heading }}</h1>
+         <h3>{!! $user->header->paragraph !!}</h3>
+         <ul class="list-inline list-unstyled">
+            <li>
+               <a href="{{ $user->header->button_1_address }}" class="btn">
+                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                     {{ $user->header->button_1_name }}
+               </a>
+            </li>
+            <li><a href="{{ $user->header->button_2_address }}" class="btn">{{ $user->header->button_2_name }}</a></li>
+         </ul>
+      </div>
+      @else
+      <div class="container fadeIn">
+			<h1>Guest header</h1>
+			<h3>Guest paragraph</h3>
 			<ul class="list-inline list-unstyled">
 				<li>
-   				<a href="{{ $user->header->button_1_address }}" class="btn">
+   				<a href="#" class="btn">
    						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-   						{{ $user->header->button_1_name }}
+   						Guest
    				</a>
             </li>
-				<li><a href="{{ $user->header->button_2_address }}" class="btn">{{ $user->header->button_2_name }}</a></li>
+				<li><a href="#" class="btn">Guest</a></li>
 			</ul>
 		</div>
+      @endif
 	</section>
 
 	<section id="logos" class="bggray">
@@ -154,29 +170,27 @@
 			<!-- Item 1 -->
 				<!-- TAB 1 -->
 			<div class="item row" id="item11">
-				<div class="itemImg col-md-6 col-sm-6 col-xs-12 animateRight"><img src="img/people.jpg" class="img-responsive"></div>
+				<div class="itemImg col-md-6 col-sm-6 col-xs-12 animateRight"><img src="{{ $user->tabFeature[0]->image }}" class="img-responsive"></div>
 				<div class="itemContent col-md-6 col-sm-6 col-xs-12 animateLeft" style="text-align:center">
-					<h3>For every <span>startup</span></h3>
-					<p style="padding-left:95px;padding-right:95px">Lorem ipsum dolor sit atmet sit dolor greand fdanrh sdfs sit atmet sit dolor greand fdanrh sdfs</p>
-					<p>In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, quam non erat mirum sapientiae lorem cupido patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.</p>
+					<h3>{{ $user->tabFeature[0]->heading }}</h3>
+					<p style="padding-left:95px;padding-right:95px">{{ $user->tabFeature[0]->paragraph }}</p>
 					<ul class="list-inline list-unstyled">
-					<li><button class="btn">Get Template</a></button></li>
-					<li><button class="btn">See Elements</button></li>
+					<a href="{{ url( $user->tabFeature[0]->button_1_address ) }}" class="btn">{{ $user->tabFeature[0]->button_1_name }}</a>
+					<a href="{{ url( $user->tabFeature[0]->button_2_address ) }}" class="btn">{{ $user->tabFeature[0]->button_2_name }}</a>
 				</ul>
 				</div>
 			</div>
 				<!-- TAB 2 -->
 			<div class="item row" id="item12">
 				<div class="itemContent col-md-6 col-sm-6 col-xs-12 animateRight" style="text-align:center">
-					<h3>New Age <span>Technology</span></h3>
-					<p style="padding-left:95px;padding-right:95px">Lorem ipsum dolor sit atmet sit dolor greand fdanrh sdfs sit atmet sit dolor greand fdanrh sdfs</p>
-					<p>In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, quam non erat mirum sapientiae lorem cupido patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.</p>
+					<h3>{{ $user->tabFeature[1]->heading }}</h3>
+					<p style="padding-left:95px;padding-right:95px">{{ $user->tabFeature[1]->paragraph }}</p>
 					<ul class="list-inline list-unstyled">
-					<li><button class="btn">Get Template</a></button></li>
-					<li><button class="btn">See Elements</button></li>
+					<a href="{{ url( $user->tabFeature[1]->button_1_address) }}"class="btn">{{ $user->tabFeature[1]->button_1_name }}</a>
+					<a href="{{ url( $user->tabFeature[1]->button_2_address) }}"class="btn">{{ $user->tabFeature[1]->button_2_name }}</a>
 				</ul>
 				</div>
-				<div class="itemImg col-md-6 col-sm-6 col-xs-12 animateLeft"><img src="img/phone.jpg" class="img-responsive"></div>
+				<div class="itemImg col-md-6 col-sm-6 col-xs-12 animateLeft"><img src="{{ $user->tabFeature[1]->image }}" class="img-responsive"></div>
 			</div>
 				<!-- TAB 3 -->
 			<div class="item row" id="item13">
@@ -201,21 +215,19 @@
 				</div>
 			</div>
 			<!-- Item 2 -->
-			<div class="item row" id="item2">
+         <div class="item row" id="item2">
 				<div class="itemContent col-md-6 col-sm-6 col-xs-12 animateRight" style="text-align:left">
-					<h3>New age <span>technology</span></h3>
-					<p style="padding-right:190px">Lorem ipsum dolor sit atmet sit dolor greand fdanrh sdfs sit atmet sit dolor greand fdanrh sdfs</p>
-					<p>In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, quam non erat mirum sapientiae lorem cupido patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.</p>
+					<h3>{{ $user->tabFeature[2]->heading }}</h3>
+					<p style="padding-right:190px">{{ $user->tabFeature[2]->paragraph }}</p>
 				</div>
-				<div class="itemImg col-md-6 col-sm-6 col-xs-12 animateLeft"><img src="img/mac.png" class="img-responsive"></div>
+				<div class="itemImg col-md-6 col-sm-6 col-xs-12 animateLeft"><img src="{{ $user->tabFeature[2]->image }}" class="img-responsive"></div>
 			</div>
 			<!-- Item 3 -->
 			<div class="item row" id="item3">
-				<div class="itemImg col-md-6 col-sm-6 col-xs-12 animateRight"><img src="img/helmet.jpg" class="img-responsive"></div>
+				<div class="itemImg col-md-6 col-sm-6 col-xs-12 animateRight"><img src="{{ $user->tabFeature[2]->image }}" class="img-responsive"></div>
 				<div class="itemContent col-md-6 col-sm-6 col-xs-12 animateLeft" style="text-align:right">
-					<h3>Hang <span>on to</span> your helmet</h3>
-					<p style="padding-left:130px">Lorem ipsum dolor sit atmet sit dolor greand fdanrh sdfs sit atmet sit dolor greand fdanrh sdfs</p>
-					<p>In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, quam non erat mirum sapientiae lorem cupido patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.</p>
+					<h3>{{ $user->tabFeature[2]->heading }}</h3>
+					<p style="padding-left:130px">{{ $user->tabFeature[2]->paragraph }}</p>
 				</div>
 			</div>
 		</div>
